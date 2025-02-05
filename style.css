@@ -1,7 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
+:root {
+  --lime: #90b15b;
+  --mustard: #dbc783;
+  --water: #75a4c0;
+  --apple: #c07575;
+}
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -13,11 +21,17 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.app {
+  max-width: 1020px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   height: 100vh;
   overflow: hidden;
-  gap: 20px;
+  gap: 24px;
 }
-
 .container {
   width: 1000px;
   height: 500px;
@@ -28,7 +42,50 @@ body {
   width: 20px;
   height: 20px;
   border: 1px solid #928f8f;
+  cursor: pointer;
 }
-.box:hover {
-  background-color: #90b15b;
+
+.controls {
+  display: flex;
+  width: 100%;
+}
+.color-picker {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+.color {
+  width: 32px;
+  border: 1px solid #928f8f;
+  height: 32px;
+  border: 1px solid #928f8f;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.lime,
+#lime {
+  background-color: var(--lime);
+  border: 1px solid var(--lime);
+}
+.mustard,
+#mustard {
+  background-color: var(--mustard);
+  border: 1px solid var(--mustard);
+}
+.water,
+#water {
+  background-color: var(--water);
+  border: 1px solid var(--water);
+}
+.apple,
+#apple {
+  background-color: var(--apple);
+  border: 1px solid var(--apple);
+}
+.none {
+  background-color: unset;
+}
+.picked {
+  border: 4px solid #ffffff !important;
 }
