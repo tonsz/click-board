@@ -89,3 +89,20 @@ body {
 .picked {
   border: 4px solid #ffffff !important;
 }
+.sorry {
+  display: none;
+}
+@media screen and (max-width: 1019px), screen and (max-height: 620px) {
+  .app {
+    display: none;
+  }
+  .sorry {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 0.75rem;
+    text-align: center;
+  }
+}
