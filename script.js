@@ -5,29 +5,55 @@ $(document).ready(function () {
   let colorClasses = ["lime", "apple", "mustard", "water"];
   let activity = "click";
   let curColorClass = "lime";
+  let prevClass = "";
 
   // grid setup
   for (var count = 0; count <= cols * rows - 1; count++) {
     $(".container").append(`<div class="box" id="b-${count}"></div>`);
   }
-  // hover effect
-  // $(".box")
-  //   .on("mouseenter", function (event) {
-  //     $(`#${event.target.id}`).addClass(curColorClass);
-  //   })
-  //   .on("mouseleave", function (event) {
-  //     let boxId = `#${event.target.id}`;
-  //     if (!$(boxId).hasClass("ticked")) {
-  //       $(boxId).removeClass(curColorClass);
-  //     }
-  //   });
 
-  function changeColor() {}
+  // hover effect
+  $(".box")
+    .on("mouseenter", function (event) {
+      if ($(`#${event.target.id}`).hasClass("ticked")) {
+        // if the box was initially ticked,
+        // store the previous color in a variable
+        prevClass = this.className;
+      }
+      // perform change color depending on current chosen color
+      changeColor(`#${event.target.id}`);
+    })
+    .on("mouseleave", function (event) {
+      if (!$(`#${event.target.id}`).hasClass("ticked")) {
+        // check whether in the act of hovering,
+        // the color was actually changed.
+        // as the listener for a click/paint action
+        // already marks a box with ticked
+        // if not, perform these:
+        $(`#${event.target.id}`).removeClass();
+        $(`#${event.target.id}`).addClass("box");
+        if (prevClass != "") {
+          // then, checking if this variable is not empty
+          // if yes, then revert it back to the initial color
+          $(`#${event.target.id}`).addClass("ticked");
+          $(`#${event.target.id}`).addClass(prevClass);
+        }
+      }
+      // regardless, this variable must be empty again for next use
+      prevClass = "";
+    });
+
+  function changeColor(id) {
+    // add border color change here
+    $(id).removeClass();
+    $(id).addClass("box");
+    $(id).addClass(curColorClass);
+  }
 
   function paint(e) {
     let boxId = `#${e.target.id}`;
+    changeColor(boxId);
     $(boxId).addClass("ticked");
-    $(boxId).addClass(curColorClass);
   }
 
   $(".box").on(activity, paint);
