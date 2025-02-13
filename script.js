@@ -11,31 +11,40 @@ $(document).ready(function () {
   for (var count = 0; count <= cols * rows - 1; count++) {
     $(".container").append(`<div class="box" id="b-${count}"></div>`);
   }
-  // hover effect
 
+  // hover effect
   $(".box")
     .on("mouseenter", function (event) {
       if ($(`#${event.target.id}`).hasClass("ticked")) {
+        // if the box was initially ticked,
+        // store the previous color in a variable
         prevClass = this.className;
       }
+      // perform change color depending on current chosen color
       changeColor(`#${event.target.id}`);
     })
     .on("mouseleave", function (event) {
-      if ($(`#${event.target.id}`).hasClass("ticked")) {
-        // prevClass = "";
-      } else {
+      if (!$(`#${event.target.id}`).hasClass("ticked")) {
+        // check whether in the act of hovering,
+        // the color was actually changed.
+        // as the listener for a click/paint action
+        // already marks a box with ticked
+        // if not, perform these:
         $(`#${event.target.id}`).removeClass();
         $(`#${event.target.id}`).addClass("box");
-
-        $(`#${event.target.id}`).addClass(prevClass); // something wrong here, box is being included lol
+        if (prevClass != "") {
+          // then, checking if this variable is not empty
+          // if yes, then revert it back to the initial color
+          $(`#${event.target.id}`).addClass("ticked");
+          $(`#${event.target.id}`).addClass(prevClass);
+        }
       }
-      // let boxId = `#${event.target.id}`;
-      // if (!$(boxId).hasClass("ticked")) {
-      //   $(boxId).removeClass(curColorClass);
-      // }
+      // regardless, this variable must be empty again for next use
+      prevClass = "";
     });
 
   function changeColor(id) {
+    // add border color change here
     $(id).removeClass();
     $(id).addClass("box");
     $(id).addClass(curColorClass);
