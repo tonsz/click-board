@@ -8,7 +8,7 @@
   </head>
   <body>
     <div class="app">
-      <div class="title"><h1>Board</h1></div>
+      <div class="title"><h1>🎨</h1></div>
       <div class="container"></div>
       <div class="controls">
         <div class="color-picker">
@@ -17,6 +17,14 @@
           <div class="color" id="water"></div>
           <div class="color" id="apple"></div>
         </div>
+        <div class="note">
+          <p>
+            You are currently<strong>
+              <span id="activity">clicking</span></strong
+            >. Press <span class="keycap">H</span> to toggle.
+          </p>
+        </div>
+        <div class="note"></div>
       </div>
     </div>
     <div class="sorry">
@@ -25,6 +33,18 @@
         kindly use a bigger screen.
       </h1>
     </div>
+    <div class="modal">
+      <div class="m-container terms">
+        <p>
+          Data will <strong>NOT</strong> be saved on any database
+          <strong>OR</strong> your browser. <br />Do not close the page or
+          accidentally refresh because it will lead to losing your beautiful
+          artwork.
+        </p>
+        <button id="agree">I understand</button>
+      </div>
+    </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="script.js"></script>
   </body>

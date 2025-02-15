@@ -1,11 +1,30 @@
 $(document).ready(function () {
-  let cols = $(".container").width() / 20;
-  let rows = $(".container").height() / 20;
+  let cols = $(".container").width() / 50;
+  let rows = $(".container").height() / 50;
 
-  let colorClasses = ["lime", "apple", "mustard", "water"];
   let activity = "click";
   let curColorClass = "lime";
   let prevClass = "";
+
+  function changeColor(id) {
+    // add border color change here
+    $(id).removeClass();
+    $(id).addClass("box");
+    $(id).addClass(curColorClass);
+  }
+
+  function paint(e) {
+    let boxId = `#${e.target.id}`;
+    changeColor(boxId);
+    $(boxId).addClass("ticked");
+  }
+
+  function showTerms() {
+    $(".modal").addClass("opened");
+    $("#agree").on("click", function () {
+      $(".modal").removeClass("opened");
+    });
+  }
 
   // grid setup
   for (var count = 0; count <= cols * rows - 1; count++) {
@@ -43,19 +62,6 @@ $(document).ready(function () {
       prevClass = "";
     });
 
-  function changeColor(id) {
-    // add border color change here
-    $(id).removeClass();
-    $(id).addClass("box");
-    $(id).addClass(curColorClass);
-  }
-
-  function paint(e) {
-    let boxId = `#${e.target.id}`;
-    changeColor(boxId);
-    $(boxId).addClass("ticked");
-  }
-
   $(".box").on(activity, paint);
 
   // toggle between hover and click
@@ -63,10 +69,14 @@ $(document).ready(function () {
     if (event.key === "h") {
       if (activity === "click") {
         activity = "mouseover";
+
+        $("#activity").html("painting");
         $(".box").on("mouseover", paint);
         $(".box").off("click", paint);
       } else {
         activity = "click";
+
+        $("#activity").html("clicking");
         $(".box").off("mouseover", paint);
         $(".box").on("click", paint);
       }
@@ -79,4 +89,6 @@ $(document).ready(function () {
     $(`#${event.target.id}`).addClass("picked");
     curColorClass = event.target.id;
   });
+
+  setTimeout(showTerms, 400);
 });
