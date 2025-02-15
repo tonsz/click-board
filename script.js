@@ -1,6 +1,6 @@
 $(document).ready(function () {
-  let cols = $(".container").width() / 50;
-  let rows = $(".container").height() / 50;
+  let cols = $(".container").width() / 20;
+  let rows = $(".container").height() / 20;
 
   let activity = "click";
   let curColorClass = "lime";
