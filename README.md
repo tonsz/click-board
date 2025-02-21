@@ -2,7 +2,7 @@
 
 Somehow inspired by 1 million checkboxes that eventually imitated the core functionality of r/place. This is a board where you can place a color on a specific box.
 
-## suggestions
+## suggestions / upcoming features
 
 ### more colors to choose from
 
@@ -10,4 +10,8 @@ Somehow inspired by 1 million checkboxes that eventually imitated the core funct
 
 ### toggling between box sixes
 
-- User can have a choice in making the boxes smaller or bigger: 10x10, 20x20 or 50x50 boxes.
+- ~~User can have a choice in making the boxes smaller or bigger: 10x10, 20x20 or 50x50 boxes~~. Done. Working on putting a validator here since it also resets the board.
+
+## eraser
+
+- User can reset the color of a box to none. Thinking about where to put this tool.

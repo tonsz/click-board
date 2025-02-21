@@ -8,8 +8,24 @@
   </head>
   <body>
     <div class="app">
-      <div class="title"><h1>🎨</h1></div>
-      <div class="container"></div>
+      <div class="title">
+        <h1>🎨</h1>
+      </div>
+      <div class="board">
+        <div class="setup-controls">
+          <div class="pixel-dropdown">
+            <select
+              name="pixelSize"
+              id="pixelSize"
+              onchange="changePixelSize()"
+            >
+              <option value="10">10 x 10</option>
+              <option value="20">20 x 20</option>
+            </select>
+          </div>
+        </div>
+        <div class="container"></div>
+      </div>
       <div class="controls">
         <div class="color-picker">
           <div class="color picked" id="lime"></div>
